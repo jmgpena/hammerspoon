@@ -208,10 +208,12 @@ function applyLayout(layout)
   -- loop through the layout and set standard windows
   for k,val in pairs(layout) do
     app = hs.application.find(val.app)
-    wins = app:allWindows()
-    for k,win in pairs(wins) do
-      if win:isStandard() then
-        hs.grid.set(win,val.grid)
+    if app then
+      wins = app:allWindows()
+      for k,win in pairs(wins) do
+        if win:isStandard() then
+          hs.grid.set(win,val.grid)
+        end
       end
     end
   end
